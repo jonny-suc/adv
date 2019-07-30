@@ -1,0 +1,7 @@
+==============
+阅读前必读
+==============
+
+::
+
+    测试访问url:http://api.mingyihui.net:8080/modules/adv/adv/index

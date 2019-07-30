@@ -1,0 +1,508 @@
+===========================
+表关键字段设计
+===========================
+
+用户表
+==========================
+::
+
+    对原表monolithpro_kuaiyi_services_users进行修改
+
+.. list-table:: 用户表-补充字段
+   :widths: 10 15 20 10 10 5
+   :header-rows: 1
+
+   * - 字段
+     - 字段定义
+     - 规则
+     - 类型
+     - 是否必填
+     - 默认值
+   * - user_type
+     - 用户类型
+     - 0：内部用户 1：合作用户
+     - tinyint(1)
+     - 是
+     - 0
+   * - status
+     - 用户状态 
+     - 0：待审核 1：审核失败 2：审核通过
+     - tinyint(1)
+     - 是
+     - 0
+   * - reason
+     - 用户审核不通过原因
+     - --
+     - varchar(255)
+     - 否
+     - --
+   * - is_ban
+     - 用户是否被禁用 
+     - 0：否 1：被禁用 用户无法登录
+     - tinyint(1)
+     - 是
+     - 0
+
+
+
+角色表
+=============
+
+.. list-table:: monolithpro_kuaiyi_services_role 进行修改
+   :widths: 10 15 20 10 10 5
+   :header-rows: 1
+
+   * - 字段
+     - 字段定义
+     - 规则
+     - 类型
+     - 是否必填
+     - 默认值
+   * - id
+     - 角色id
+     - PRIMARY KEY
+     - int(10)
+     - 是
+     - --
+   * - role_title
+     - 角色名称
+     - --
+     - varchar(30)
+     - 是
+     - --
+   * - role_name
+     - 角色编码
+     - --
+     - varchar(30)
+     - 是
+     - --
+   * - privs
+     - 角色权限列表
+     - 权限id用,连接形成字串保存
+     - text
+     - 否
+     - --
+
+
+用户-角色关系表
+=================
+
+.. list-table:: monolithpro_kuaiyi_services_user_role
+   :widths: 10 15 20 10 10 5
+   :header-rows: 1
+
+   * - 字段
+     - 字段定义
+     - 规则
+     - 类型
+     - 是否必填
+     - 默认值
+   * - ur_id
+     - 用户角色关联id
+     - PRIMARY KEY
+     - int(10)
+     - 是
+     - --
+   * - uid
+     - 用户表外键用户id
+     - --
+     - int(10)
+     - 是
+     - --
+   * - rid
+     - 角色表外键角色id
+     - --
+     - int(10)
+     - 是
+     - --
+
+权限表
+=============
+
+.. list-table:: monolithpro_kuaiyi_services_priv
+   :widths: 10 15 20 10 10 5
+   :header-rows: 1
+
+   * - 字段
+     - 字段定义
+     - 规则
+     - 类型
+     - 是否必填
+     - 默认值
+   * - id
+     - 权限id
+     - PRIMARY KEY
+     - int(10)
+     - 是
+     - --
+   * - priv_name
+     - 权限名称
+     - --
+     - varchar(30)
+     - 是
+     - --
+   * - priv_code
+     - 权限编码
+     - unique index
+     - varchar(30)
+     - 是
+     - --
+   * - desc
+     - 权限描述
+     - --
+     - varchar(100)
+     - 否
+     - --
+
+广告项表
+=============
+
+.. list-table:: monolithpro_kuaiyi_adv_project
+   :widths: 10 15 20 10 10 5
+   :header-rows: 1
+
+   * - 字段
+     - 字段定义
+     - 规则
+     - 类型
+     - 是否必填
+     - 默认值
+   * - id
+     - 广告项id
+     - PRIMARY KEY
+     - int(10)
+     - 是
+     - --
+   * - ad_project_name
+     - 广告项名称
+     - --
+     - varchar(20)
+     - 是
+     - --
+   * - add_time
+     - 创建时间
+     - --
+     - int(10)
+     - 是
+     - 0
+   * - belong_uid
+     - 所属用户id 
+     - --
+     - int(10)
+     - 否
+     - 0
+   * - update_time
+     - 最新修改时间
+     - --
+     - int(10)
+     - 是
+     - 0
+
+
+广告位表
+=============
+.. list-table:: monolithpro_kuaiyi_adv_position
+   :widths: 10 15 20 10 10 5
+   :header-rows: 1
+
+   * - 字段
+     - 字段定义
+     - 规则
+     - 类型
+     - 是否必填
+     - 默认值
+   * - id
+     - 广告位id
+     - PRIMARY KEY
+     - int(10)
+     - 是
+     - --
+   * - sign
+     - 广告位标志
+     - unique
+     - var(100)
+     - 是
+     - --
+   * - title
+     - 广告位名称
+     - --
+     - var(100)
+     - 是
+     - --
+   * - type
+     - 广告位类型
+     - 0单一型广告，1组合型广告
+     - tinyint(1)
+     - 是
+     - --
+   * - ishow
+     - 是否展示
+     - 0不展示，1展示
+     - tinyint(1)
+     - 是
+     - 1
+   * - isdel
+     - 是否删除
+     - 0不删除，1删除
+     - tinyint(1)
+     - 是
+     - 0
+
+广告项与广告位关联表
+====================
+.. list-table:: monolithpro_kuaiyi_adv_project_position
+   :widths: 10 15 20 10 10 5
+   :header-rows: 1
+
+   * - 字段
+     - 字段定义
+     - 规则
+     - 类型
+     - 是否必填
+     - 默认值
+   * - pp_id
+     - 广告项与广告位关联id
+     - PRIMARY KEY
+     - int(10)
+     - 是
+     - --
+   * - project_id
+     - 广告项id
+     - --
+     - int(10)
+     - 是
+     - --
+   * - position_id
+     - 广告位id
+     - --
+     - int(10)
+     - 是
+     - --
+   * - add_time
+     - 添加时间
+     - --
+     - int(10)
+     - 是
+     - 0
+   * - update_time
+     - 最新修改时间
+     - --
+     - int(10)
+     - 是
+     - 0
+
+广告表
+====================
+.. list-table:: monolithpro_kuaiyi_adv
+   :header-rows: 1
+
+   * - 字段
+     - 字段定义
+     - 规则
+     - 类型
+     - 是否必填
+     - 默认值
+   * - id
+     - 广告id
+     - PRIMARY KEY
+     - int(10)
+     - 是
+     - --
+   * - ad_name
+     - 广告名称
+     - --
+     - varchar(64)
+     - 是
+     - --
+   * - starttime
+     - 广告开始时间
+     - --
+     - int(10)
+     - 是
+     - 0
+   * - endtime
+     - 广告结束时间
+     - --
+     - int(10)
+     - 是
+     - 0
+   * - orders
+     - 排序字段
+     - 序号小的排前面
+     - int(8)
+     - 是
+     - 0
+   * - diseaseids
+     - 显示端疾病标签
+     - 疾病id多个用,号隔开，空值表示无限制
+     - text
+     - 否
+     - 空
+   * - bcateids
+     - 一级科室id
+     - 一级科室id多个用,号隔开，空值表示无限制
+     - text
+     - 否
+     - 空
+   * - scateids
+     - 二级科室id
+     - 二级科室id多个用,号隔开，空值表示无限制
+     - text
+     - 否
+     - 空
+   * - user_age_from
+     - 用户年龄起始值
+     - 0 表示无下限
+     - tinyint(3)
+     - 否
+     - 0
+   * - user_age_to
+     - 用户年龄终点值
+     - 0 表示无上限
+     - tinyint(3)
+     - 否
+     - 0
+   * - cityids
+     - 用户地区属性
+     - 城市id 多个用,号隔开，空值表示无限制
+     - text
+     - 否
+     - 0
+   * - user_sex
+     - 用户性别属性
+     - 0 不限 ，1限男 ，2限女
+     - tinyint(1)
+     - 是
+     - 0
+   * - status
+     - 审核状态
+     - 0 待审核 ，1审核通过 ，2审核拒绝
+     - tinyint(1)
+     - 是
+     - 0
+   * - refuse
+     - 拒绝原由
+     - --
+     - varchar(100)
+     - 否
+     - 空
+   * - update_time
+     - 最新修改时间
+     - --
+     - int(10)
+     - 是
+     - 0
+
+广告内容表
+====================
+.. list-table:: monolithpro_kuaiyi_adv_content
+   :header-rows: 1
+
+   * - 字段
+     - 字段定义
+     - 规则
+     - 类型
+     - 是否必填
+     - 默认值
+   * - id
+     - 广告内容id
+     - PRIMARY KEY
+     - int(10)
+     - 是
+     - --
+   * - adv_id
+     - 所属广告id
+     - --
+     - int(10)
+     - 是
+     - --
+   * - content_type
+     - 内容类型
+     - 0：文字链 ，1：图片， 2：视频
+     - int(10)
+     - 是
+     - --
+   * - show_pc
+     - pc是否展示
+     - 0:否 ， 1：是
+     - tinyint(1)
+     - 是
+     - 0
+   * - show_m
+     - M/MIP是否展示
+     - 0:否 ， 1：是
+     - tinyint(1)
+     - 是
+     - 0
+   * - show_app
+     - app端是否展示
+     - 0:否 ， 1：是
+     - tinyint(1)
+     - 是
+     - 0
+   * - show_wj
+     - 是否可外部调用
+     - 0:否 ， 1：是
+     - tinyint(1)
+     - 是
+     - 0
+   * - pc_column1
+     - pc端显示项1
+     - 若内容类型=文字链，表示文字链内容，若类型=图片，表示图片地址，若类型=视频，表示视频封面图片地址
+     - text
+     - 否
+     - 空
+   * - pc_column2
+     - pc端显示项2
+     - 若内容类型=文字链，表示跳转连接，若类型=图片，表示跳转连接，若类型=视频，表示视频通用代码
+     - text
+     - 否
+     - 空
+   * - m_column1
+     - M/MIP端显示项1
+     - 同 pc_column1
+     - text
+     - 否
+     - 空
+   * - m_column2
+     - M/MIP端显示项2
+     - 同 pc_column2
+     - text
+     - 否
+     - 空
+   * - app_column1
+     - APP端显示项1
+     - 同 pc_column1
+     - text
+     - 否
+     - 空
+   * - app_column2
+     - APP端显示项2
+     - 同 pc_column2
+     - text
+     - 否
+     - 空
+   * - wj_column1
+     - 外接参数项1
+     - 同 pc_column1
+     - text
+     - 否
+     - 空
+   * - wj_column2
+     - 外接参数项2
+     - 同 pc_column2
+     - text
+     - 否
+     - 空
+   * - add_time
+     - 添加时间
+     - 时间戳
+     - int(10)
+     - 是
+     - 0
+   * - update_time
+     - 更新时间
+     - 时间戳
+     - int(10)
+     - 是
+     - 0

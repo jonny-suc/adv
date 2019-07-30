@@ -1,0 +1,114 @@
+============
+医生概览页
+============
+
+.. list-table:: 版本修改记录
+   :widths: 10 10 40 
+   :header-rows: 1
+
+   * - 修改人
+     - 修改日期
+     - 修改内容
+   * - jonny
+     - 2019/7/29
+     - 创建
+
+
+PC版医生主页A级客户通栏广告位1
+==============================
+
+::
+
+  广告位key:adpp_doctor_1
+
+
+
+----------
+请求实例
+----------
+
+.. list-table:: 
+   :widths: 18 8 10 10 20
+   :header-rows: 1
+
+   * - 名称
+     - 必填
+     - 类型
+     - 默认值
+     - 简介
+   * - tk
+     - 是
+     - String
+     - --
+     - 加密串
+   * - ts
+     - 是
+     - Number
+     - 1520600716
+     - 当前时间戳
+   * - 名称
+     - 必填
+     - 类型
+     - 默认值
+     - 简介
+   * - adpp_id
+     - 是
+     - String
+     - --
+     - 广告位Key
+   * - userid
+     - 是
+     - Intager
+     - 0
+     - 用户id，未登录用户为0
+   * - ext_params
+     - 是
+     - JSON OBJECT
+     - {}
+     - json 格式数组
+   * -   -data_type
+     - 是
+     - String
+     - json
+     - data_type 分为 json 和 html 格式，html 格式返回 view 及 css
+   * -   -url
+     - 否
+     - String
+     - --
+     - 示例：http://www.mingyihui.net/hospital_67.html
+   * -   -referer
+     - 是
+     - String
+     - www/m/mip/android/ios
+     - 终端来源
+   * -   -site
+     - 否
+     - String
+     - mingyihui
+     - 站点
+   * -   -hid
+     - 是
+     - Intager
+     - 0
+     - 医院 id
+   * -   -new_cateid
+     - 是
+     - Intager
+     - 0
+     - 二级科室 id
+   * -   -ddid
+     - 是
+     - Intager
+     - 0
+     - 医生 id
+   * -   -mid
+     - 是
+     - Intager
+     - 0
+     - 医生多点 id
+   * -   -ip
+     - 否
+     - String
+     - --
+     - 用户 ip 地址
+       
