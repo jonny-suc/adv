@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>2. 接入指南 &#8212; 新广告系统 1.0。0 documentation</title>
+    <title>2. 接入指南 &#8212; 新广告系统 1.0.0 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -173,9 +173,9 @@
 <div class="section" id="javascript">
 <h4>2.1.2.1. 请求JAVASCRIPT示例<a class="headerlink" href="#javascript" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-JAVASCRIPT notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">form</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FormData</span><span class="p">();</span>
-<span class="nx">form</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">&quot;adpp_key&quot;</span><span class="p">,</span> <span class="s2">&quot;adpp_index_3&quot;</span><span class="p">);</span>
+<span class="nx">form</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">&quot;adpp_id&quot;</span><span class="p">,</span> <span class="s2">&quot;adpp_index_3&quot;</span><span class="p">);</span>
 <span class="nx">form</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">&quot;userid&quot;</span><span class="p">,</span> <span class="s2">&quot;4370587&quot;</span><span class="p">);</span>
-<span class="nx">form</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">&quot;ext_params&quot;</span><span class="p">,</span> <span class="s2">&quot;{\&quot;data_type\&quot;:\&quot;json\&quot;,\&quot;refer\&quot;:\&quot;www\&quot;,\&quot;mid\&quot;:5032,\&quot;new_cateid\&quot;:121,\&quot;ip\&quot;:\&quot;27.43.95.0\&quot;,\&quot;hid\&quot;:0,\&quot;site\&quot;:\&quot;mingyihui\&quot;,\&quot;url\&quot;:\&quot;\&quot;,\&quot;ddid\&quot;:0}&quot;</span><span class="p">);</span>
+<span class="nx">form</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">&quot;ext_params&quot;</span><span class="p">,</span> <span class="s2">&quot;{\&quot;data_type\&quot;:\&quot;json\&quot;,\&quot;referer\&quot;:\&quot;www\&quot;,\&quot;mid\&quot;:5032,\&quot;new_cateid\&quot;:121,\&quot;ip\&quot;:\&quot;27.43.95.0\&quot;,\&quot;hid\&quot;:0,\&quot;site\&quot;:\&quot;mingyihui\&quot;,\&quot;url\&quot;:\&quot;\&quot;,\&quot;ddid\&quot;:0}&quot;</span><span class="p">);</span>
 <span class="nx">form</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">&quot;tk&quot;</span><span class="p">,</span> <span class="s2">&quot;bdf0b198ddc53f5a96141356b8241f06&quot;</span><span class="p">);</span>
 <span class="nx">form</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">&quot;ts&quot;</span><span class="p">,</span> <span class="s2">&quot;1520600716&quot;</span><span class="p">);</span>
 
@@ -278,7 +278,7 @@
 <td><p>1</p></td>
 <td><p>广告排序字段</p></td>
 </tr>
-<tr class="row-odd"><td><p>—-ad_content</p></td>
+<tr class="row-odd"><td><p>—-ad_contents</p></td>
 <td><p>是</p></td>
 <td><p>Object</p></td>
 <td><p>{}</p></td>
@@ -396,6 +396,21 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="首页焦点图.html">3. 首页焦点图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PC版咨询列表页.html">4. PC版咨询列表页</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PC版咨询终端页.html">5. PC版咨询终端页</a></li>
+<li class="toctree-l1"><a class="reference internal" href="疾病搜索结果页.html">6. 疾病搜索结果页</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PC版按疾病找医院列表页.html">7. PC版按疾病找医院列表页</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PC版按科室找医院列表页.html">8. PC版按科室找医院列表页</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PC版医院单个疾病主页.html">9. PC版医院单个疾病主页</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PC版医院单个科室主页.html">10. PC版医院单个科室主页</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PC版按疾病找医生页.html">11. PC版按疾病找医生页</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PC版按科室找医生页.html">12. PC版按科室找医生页</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PC版医生患者咨询单个疾病聚合页.html">13. PC版医生患者咨询单个疾病聚合页</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PC版医生患者咨询聚合页.html">14. PC版医生患者咨询聚合页</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PC版医生详细介绍页.html">15. PC版医生详细介绍页</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PC版医生评价单个病种页.html">16. PC版医生评价单个病种页</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PC版医生评价页.html">17. PC版医生评价页</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PC版医生主页.html">18. PC版医生主页</a></li>
 </ul>
 
 <div class="relations">

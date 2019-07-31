@@ -8,6 +8,7 @@
 
 .. toctree::
    :caption: 业务需求
+   :hidden:
    :numbered:
 
    业务需求/需求定义

@@ -117,9 +117,9 @@
 .. code-block:: JAVASCRIPT
 
     var form = new FormData();
-    form.append("adpp_key", "adpp_index_3");
+    form.append("adpp_id", "adpp_index_3");
     form.append("userid", "4370587");
-    form.append("ext_params", "{\"data_type\":\"json\",\"refer\":\"www\",\"mid\":5032,\"new_cateid\":121,\"ip\":\"27.43.95.0\",\"hid\":0,\"site\":\"mingyihui\",\"url\":\"\",\"ddid\":0}");
+    form.append("ext_params", "{\"data_type\":\"json\",\"referer\":\"www\",\"mid\":5032,\"new_cateid\":121,\"ip\":\"27.43.95.0\",\"hid\":0,\"site\":\"mingyihui\",\"url\":\"\",\"ddid\":0}");
     form.append("tk", "bdf0b198ddc53f5a96141356b8241f06");
     form.append("ts", "1520600716");
 
@@ -203,7 +203,7 @@
      - Number
      - 1
      - 广告排序字段
-   * - ----ad_content
+   * - ----ad_contents
      - 是
      - Object
      - {}
