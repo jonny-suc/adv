@@ -1,0 +1,918 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2. 表关键字段设计 &mdash; 新广告系统 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1. 后台管理" href="../功能开发与实现/后台管理.html" />
+    <link rel="prev" title="1. 模块划分" href="模块划分.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 新广告系统
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">业务需求</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../业务需求/需求定义.html">1. 需求定义</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../业务需求/版本规划.html">2. 版本规划</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../业务需求/功能框架.html">3. 功能框架</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../业务需求/流程图.html">4. 流程图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../业务需求/字段表.html">5. 字段表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../业务需求/数据埋点.html">6. 数据埋点</a></li>
+</ul>
+<p class="caption"><span class="caption-text">需求分析</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="模块划分.html">1. 模块划分</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. 表关键字段设计</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">2.1. 用户表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">2.2. 角色表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">2.3. 用户-角色关系表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">2.4. 权限表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">2.5. 广告项表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">2.6. 广告位表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">2.7. 广告项与广告位关联表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">2.8. 广告表</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">2.9. 广告内容表</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">功能开发与实现</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../功能开发与实现/后台管理.html">1. 后台管理</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Api调用广告wiki</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Api调用广告wiki/更新日志.html">1. 更新日志</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Api调用广告wiki/接入指南.html">2. 接入指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Api调用广告wiki/首页焦点图.html">3. 首页焦点图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Api调用广告wiki/PC版咨询列表页.html">4. PC版咨询列表页</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Api调用广告wiki/PC版咨询终端页.html">5. PC版咨询终端页</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Api调用广告wiki/疾病搜索结果页.html">6. 疾病搜索结果页</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Api调用广告wiki/PC版按疾病找医院列表页.html">7. PC版按疾病找医院列表页</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Api调用广告wiki/PC版按科室找医院列表页.html">8. PC版按科室找医院列表页</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Api调用广告wiki/PC版医院单个疾病主页.html">9. PC版医院单个疾病主页</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Api调用广告wiki/PC版医院单个科室主页.html">10. PC版医院单个科室主页</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Api调用广告wiki/PC版按疾病找医生页.html">11. PC版按疾病找医生页</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Api调用广告wiki/PC版按科室找医生页.html">12. PC版按科室找医生页</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Api调用广告wiki/PC版医生患者咨询单个疾病聚合页.html">13. PC版医生患者咨询单个疾病聚合页</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Api调用广告wiki/PC版医生患者咨询聚合页.html">14. PC版医生患者咨询聚合页</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Api调用广告wiki/PC版医生详细介绍页.html">15. PC版医生详细介绍页</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Api调用广告wiki/PC版医生评价单个病种页.html">16. PC版医生评价单个病种页</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Api调用广告wiki/PC版医生主页.html">17. PC版医生主页</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Api调用广告wiki/PC版医生评价页.html">18. PC版医生评价页</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">新广告系统</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>2. 表关键字段设计</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/需求分析/表关键字段设计.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>2. 表关键字段设计<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>2.1. 用户表<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">对原表monolithpro_kuaiyi_services_users进行修改</span>
+</pre></div>
+</div>
+<table class="colwidths-given docutils align-default" id="id11">
+<caption><span class="caption-text">用户表-补充字段</span><a class="headerlink" href="#id11" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 21%" />
+<col style="width: 29%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段</p></th>
+<th class="head"><p>字段定义</p></th>
+<th class="head"><p>规则</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>是否必填</p></th>
+<th class="head"><p>默认值</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>user_type</p></td>
+<td><p>用户类型</p></td>
+<td><p>0：内部用户 1：合作用户</p></td>
+<td><p>tinyint(1)</p></td>
+<td><p>是</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>status</p></td>
+<td><p>用户状态</p></td>
+<td><p>0：待审核 1：审核失败 2：审核通过</p></td>
+<td><p>tinyint(1)</p></td>
+<td><p>是</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>reason</p></td>
+<td><p>用户审核不通过原因</p></td>
+<td><p>–</p></td>
+<td><p>varchar(255)</p></td>
+<td><p>否</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p>is_ban</p></td>
+<td><p>用户是否被禁用</p></td>
+<td><p>0：否 1：被禁用 用户无法登录</p></td>
+<td><p>tinyint(1)</p></td>
+<td><p>是</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id3">
+<h2>2.2. 角色表<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-given docutils align-default" id="id12">
+<caption><span class="caption-text">monolithpro_kuaiyi_services_role 进行修改</span><a class="headerlink" href="#id12" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 21%" />
+<col style="width: 29%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段</p></th>
+<th class="head"><p>字段定义</p></th>
+<th class="head"><p>规则</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>是否必填</p></th>
+<th class="head"><p>默认值</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>id</p></td>
+<td><p>角色id</p></td>
+<td><p>PRIMARY KEY</p></td>
+<td><p>int(10)</p></td>
+<td><p>是</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p>role_title</p></td>
+<td><p>角色名称</p></td>
+<td><p>–</p></td>
+<td><p>varchar(30)</p></td>
+<td><p>是</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-even"><td><p>role_name</p></td>
+<td><p>角色编码</p></td>
+<td><p>–</p></td>
+<td><p>varchar(30)</p></td>
+<td><p>是</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p>privs</p></td>
+<td><p>角色权限列表</p></td>
+<td><p>权限id用,连接形成字串保存</p></td>
+<td><p>text</p></td>
+<td><p>否</p></td>
+<td><p>–</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id4">
+<h2>2.3. 用户-角色关系表<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-given docutils align-default" id="id13">
+<caption><span class="caption-text">monolithpro_kuaiyi_services_user_role</span><a class="headerlink" href="#id13" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 21%" />
+<col style="width: 29%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段</p></th>
+<th class="head"><p>字段定义</p></th>
+<th class="head"><p>规则</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>是否必填</p></th>
+<th class="head"><p>默认值</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ur_id</p></td>
+<td><p>用户角色关联id</p></td>
+<td><p>PRIMARY KEY</p></td>
+<td><p>int(10)</p></td>
+<td><p>是</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p>uid</p></td>
+<td><p>用户表外键用户id</p></td>
+<td><p>–</p></td>
+<td><p>int(10)</p></td>
+<td><p>是</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-even"><td><p>rid</p></td>
+<td><p>角色表外键角色id</p></td>
+<td><p>–</p></td>
+<td><p>int(10)</p></td>
+<td><p>是</p></td>
+<td><p>–</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id5">
+<h2>2.4. 权限表<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-given docutils align-default" id="id14">
+<caption><span class="caption-text">monolithpro_kuaiyi_services_priv</span><a class="headerlink" href="#id14" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 21%" />
+<col style="width: 29%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段</p></th>
+<th class="head"><p>字段定义</p></th>
+<th class="head"><p>规则</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>是否必填</p></th>
+<th class="head"><p>默认值</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>id</p></td>
+<td><p>权限id</p></td>
+<td><p>PRIMARY KEY</p></td>
+<td><p>int(10)</p></td>
+<td><p>是</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p>priv_name</p></td>
+<td><p>权限名称</p></td>
+<td><p>–</p></td>
+<td><p>varchar(30)</p></td>
+<td><p>是</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-even"><td><p>priv_code</p></td>
+<td><p>权限编码</p></td>
+<td><p>unique index</p></td>
+<td><p>varchar(30)</p></td>
+<td><p>是</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p>desc</p></td>
+<td><p>权限描述</p></td>
+<td><p>–</p></td>
+<td><p>varchar(100)</p></td>
+<td><p>否</p></td>
+<td><p>–</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id6">
+<h2>2.5. 广告项表<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-given docutils align-default" id="id15">
+<caption><span class="caption-text">monolithpro_kuaiyi_adv_project</span><a class="headerlink" href="#id15" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 21%" />
+<col style="width: 29%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段</p></th>
+<th class="head"><p>字段定义</p></th>
+<th class="head"><p>规则</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>是否必填</p></th>
+<th class="head"><p>默认值</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>id</p></td>
+<td><p>广告项id</p></td>
+<td><p>PRIMARY KEY</p></td>
+<td><p>int(10)</p></td>
+<td><p>是</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p>ad_project_name</p></td>
+<td><p>广告项名称</p></td>
+<td><p>–</p></td>
+<td><p>varchar(20)</p></td>
+<td><p>是</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-even"><td><p>add_time</p></td>
+<td><p>创建时间</p></td>
+<td><p>–</p></td>
+<td><p>int(10)</p></td>
+<td><p>是</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>belong_uid</p></td>
+<td><p>所属用户id</p></td>
+<td><p>–</p></td>
+<td><p>int(10)</p></td>
+<td><p>否</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>update_time</p></td>
+<td><p>最新修改时间</p></td>
+<td><p>–</p></td>
+<td><p>int(10)</p></td>
+<td><p>是</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id7">
+<h2>2.6. 广告位表<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-given docutils align-default" id="id16">
+<caption><span class="caption-text">monolithpro_kuaiyi_adv_position</span><a class="headerlink" href="#id16" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 21%" />
+<col style="width: 29%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段</p></th>
+<th class="head"><p>字段定义</p></th>
+<th class="head"><p>规则</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>是否必填</p></th>
+<th class="head"><p>默认值</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>id</p></td>
+<td><p>广告位id</p></td>
+<td><p>PRIMARY KEY</p></td>
+<td><p>int(10)</p></td>
+<td><p>是</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p>sign</p></td>
+<td><p>广告位标志</p></td>
+<td><p>unique</p></td>
+<td><p>var(100)</p></td>
+<td><p>是</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-even"><td><p>title</p></td>
+<td><p>广告位名称</p></td>
+<td><p>–</p></td>
+<td><p>var(100)</p></td>
+<td><p>是</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p>广告位类型</p></td>
+<td><p>0单一型广告，1组合型广告</p></td>
+<td><p>tinyint(1)</p></td>
+<td><p>是</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-even"><td><p>ishow</p></td>
+<td><p>是否展示</p></td>
+<td><p>0不展示，1展示</p></td>
+<td><p>tinyint(1)</p></td>
+<td><p>是</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>isdel</p></td>
+<td><p>是否删除</p></td>
+<td><p>0不删除，1删除</p></td>
+<td><p>tinyint(1)</p></td>
+<td><p>是</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id8">
+<h2>2.7. 广告项与广告位关联表<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-given docutils align-default" id="id17">
+<caption><span class="caption-text">monolithpro_kuaiyi_adv_project_position</span><a class="headerlink" href="#id17" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 21%" />
+<col style="width: 29%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段</p></th>
+<th class="head"><p>字段定义</p></th>
+<th class="head"><p>规则</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>是否必填</p></th>
+<th class="head"><p>默认值</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>pp_id</p></td>
+<td><p>广告项与广告位关联id</p></td>
+<td><p>PRIMARY KEY</p></td>
+<td><p>int(10)</p></td>
+<td><p>是</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p>project_id</p></td>
+<td><p>广告项id</p></td>
+<td><p>–</p></td>
+<td><p>int(10)</p></td>
+<td><p>是</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-even"><td><p>position_id</p></td>
+<td><p>广告位id</p></td>
+<td><p>–</p></td>
+<td><p>int(10)</p></td>
+<td><p>是</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p>add_time</p></td>
+<td><p>添加时间</p></td>
+<td><p>–</p></td>
+<td><p>int(10)</p></td>
+<td><p>是</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>update_time</p></td>
+<td><p>最新修改时间</p></td>
+<td><p>–</p></td>
+<td><p>int(10)</p></td>
+<td><p>是</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id9">
+<h2>2.8. 广告表<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default" id="id18">
+<caption><span class="caption-text">monolithpro_kuaiyi_adv</span><a class="headerlink" href="#id18" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段</p></th>
+<th class="head"><p>字段定义</p></th>
+<th class="head"><p>规则</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>是否必填</p></th>
+<th class="head"><p>默认值</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>id</p></td>
+<td><p>广告id</p></td>
+<td><p>PRIMARY KEY</p></td>
+<td><p>int(10)</p></td>
+<td><p>是</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p>ad_name</p></td>
+<td><p>广告名称</p></td>
+<td><p>–</p></td>
+<td><p>varchar(64)</p></td>
+<td><p>是</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-even"><td><p>starttime</p></td>
+<td><p>广告开始时间</p></td>
+<td><p>–</p></td>
+<td><p>int(10)</p></td>
+<td><p>是</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>endtime</p></td>
+<td><p>广告结束时间</p></td>
+<td><p>–</p></td>
+<td><p>int(10)</p></td>
+<td><p>是</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>orders</p></td>
+<td><p>排序字段</p></td>
+<td><p>序号小的排前面</p></td>
+<td><p>int(8)</p></td>
+<td><p>是</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>diseaseids</p></td>
+<td><p>显示端疾病标签</p></td>
+<td><p>疾病id多个用,号隔开，空值表示无限制</p></td>
+<td><p>text</p></td>
+<td><p>否</p></td>
+<td><p>空</p></td>
+</tr>
+<tr class="row-even"><td><p>bcateids</p></td>
+<td><p>一级科室id</p></td>
+<td><p>一级科室id多个用,号隔开，空值表示无限制</p></td>
+<td><p>text</p></td>
+<td><p>否</p></td>
+<td><p>空</p></td>
+</tr>
+<tr class="row-odd"><td><p>scateids</p></td>
+<td><p>二级科室id</p></td>
+<td><p>二级科室id多个用,号隔开，空值表示无限制</p></td>
+<td><p>text</p></td>
+<td><p>否</p></td>
+<td><p>空</p></td>
+</tr>
+<tr class="row-even"><td><p>user_age_from</p></td>
+<td><p>用户年龄起始值</p></td>
+<td><p>0 表示无下限</p></td>
+<td><p>tinyint(3)</p></td>
+<td><p>否</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>user_age_to</p></td>
+<td><p>用户年龄终点值</p></td>
+<td><p>0 表示无上限</p></td>
+<td><p>tinyint(3)</p></td>
+<td><p>否</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>cityids</p></td>
+<td><p>用户地区属性</p></td>
+<td><p>城市id 多个用,号隔开，空值表示无限制</p></td>
+<td><p>text</p></td>
+<td><p>否</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>user_sex</p></td>
+<td><p>用户性别属性</p></td>
+<td><p>0 不限 ，1限男 ，2限女</p></td>
+<td><p>tinyint(1)</p></td>
+<td><p>是</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>status</p></td>
+<td><p>审核状态</p></td>
+<td><p>0 待审核 ，1审核通过 ，2审核拒绝</p></td>
+<td><p>tinyint(1)</p></td>
+<td><p>是</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>refuse</p></td>
+<td><p>拒绝原由</p></td>
+<td><p>–</p></td>
+<td><p>varchar(100)</p></td>
+<td><p>否</p></td>
+<td><p>空</p></td>
+</tr>
+<tr class="row-even"><td><p>update_time</p></td>
+<td><p>最新修改时间</p></td>
+<td><p>–</p></td>
+<td><p>int(10)</p></td>
+<td><p>是</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id10">
+<h2>2.9. 广告内容表<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default" id="id19">
+<caption><span class="caption-text">monolithpro_kuaiyi_adv_content</span><a class="headerlink" href="#id19" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段</p></th>
+<th class="head"><p>字段定义</p></th>
+<th class="head"><p>规则</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>是否必填</p></th>
+<th class="head"><p>默认值</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>id</p></td>
+<td><p>广告内容id</p></td>
+<td><p>PRIMARY KEY</p></td>
+<td><p>int(10)</p></td>
+<td><p>是</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p>adv_id</p></td>
+<td><p>所属广告id</p></td>
+<td><p>–</p></td>
+<td><p>int(10)</p></td>
+<td><p>是</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-even"><td><p>content_type</p></td>
+<td><p>内容类型</p></td>
+<td><p>0：文字链 ，1：图片， 2：视频</p></td>
+<td><p>int(10)</p></td>
+<td><p>是</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p>show_pc</p></td>
+<td><p>pc是否展示</p></td>
+<td><p>0:否 ， 1：是</p></td>
+<td><p>tinyint(1)</p></td>
+<td><p>是</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>show_m</p></td>
+<td><p>M/MIP是否展示</p></td>
+<td><p>0:否 ， 1：是</p></td>
+<td><p>tinyint(1)</p></td>
+<td><p>是</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>show_app</p></td>
+<td><p>app端是否展示</p></td>
+<td><p>0:否 ， 1：是</p></td>
+<td><p>tinyint(1)</p></td>
+<td><p>是</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>show_wj</p></td>
+<td><p>是否可外部调用</p></td>
+<td><p>0:否 ， 1：是</p></td>
+<td><p>tinyint(1)</p></td>
+<td><p>是</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>pc_column1</p></td>
+<td><p>pc端显示项1</p></td>
+<td><p>若内容类型=文字链，表示文字链内容，若类型=图片，表示图片地址，若类型=视频，表示视频封面图片地址</p></td>
+<td><p>text</p></td>
+<td><p>否</p></td>
+<td><p>空</p></td>
+</tr>
+<tr class="row-even"><td><p>pc_column2</p></td>
+<td><p>pc端显示项2</p></td>
+<td><p>若内容类型=文字链，表示跳转连接，若类型=图片，表示跳转连接，若类型=视频，表示视频通用代码</p></td>
+<td><p>text</p></td>
+<td><p>否</p></td>
+<td><p>空</p></td>
+</tr>
+<tr class="row-odd"><td><p>m_column1</p></td>
+<td><p>M/MIP端显示项1</p></td>
+<td><p>同 pc_column1</p></td>
+<td><p>text</p></td>
+<td><p>否</p></td>
+<td><p>空</p></td>
+</tr>
+<tr class="row-even"><td><p>m_column2</p></td>
+<td><p>M/MIP端显示项2</p></td>
+<td><p>同 pc_column2</p></td>
+<td><p>text</p></td>
+<td><p>否</p></td>
+<td><p>空</p></td>
+</tr>
+<tr class="row-odd"><td><p>app_column1</p></td>
+<td><p>APP端显示项1</p></td>
+<td><p>同 pc_column1</p></td>
+<td><p>text</p></td>
+<td><p>否</p></td>
+<td><p>空</p></td>
+</tr>
+<tr class="row-even"><td><p>app_column2</p></td>
+<td><p>APP端显示项2</p></td>
+<td><p>同 pc_column2</p></td>
+<td><p>text</p></td>
+<td><p>否</p></td>
+<td><p>空</p></td>
+</tr>
+<tr class="row-odd"><td><p>wj_column1</p></td>
+<td><p>外接参数项1</p></td>
+<td><p>同 pc_column1</p></td>
+<td><p>text</p></td>
+<td><p>否</p></td>
+<td><p>空</p></td>
+</tr>
+<tr class="row-even"><td><p>wj_column2</p></td>
+<td><p>外接参数项2</p></td>
+<td><p>同 pc_column2</p></td>
+<td><p>text</p></td>
+<td><p>否</p></td>
+<td><p>空</p></td>
+</tr>
+<tr class="row-odd"><td><p>add_time</p></td>
+<td><p>添加时间</p></td>
+<td><p>时间戳</p></td>
+<td><p>int(10)</p></td>
+<td><p>是</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>update_time</p></td>
+<td><p>更新时间</p></td>
+<td><p>时间戳</p></td>
+<td><p>int(10)</p></td>
+<td><p>是</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../功能开发与实现/后台管理.html" class="btn btn-neutral float-right" title="1. 后台管理" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="模块划分.html" class="btn btn-neutral float-left" title="1. 模块划分" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, jonny
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

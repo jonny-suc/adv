@@ -1,0 +1,342 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>5. 字段表 &mdash; 新广告系统 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="6. 数据埋点" href="数据埋点.html" />
+    <link rel="prev" title="4. 流程图" href="流程图.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> 新广告系统
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">业务需求</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="需求定义.html">1. 需求定义</a></li>
+<li class="toctree-l1"><a class="reference internal" href="版本规划.html">2. 版本规划</a></li>
+<li class="toctree-l1"><a class="reference internal" href="功能框架.html">3. 功能框架</a></li>
+<li class="toctree-l1"><a class="reference internal" href="流程图.html">4. 流程图</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5. 字段表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="数据埋点.html">6. 数据埋点</a></li>
+</ul>
+<p class="caption"><span class="caption-text">需求分析</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../需求分析/模块划分.html">1. 模块划分</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../需求分析/表关键字段设计.html">2. 表关键字段设计</a></li>
+</ul>
+<p class="caption"><span class="caption-text">功能开发与实现</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../功能开发与实现/后台管理.html">1. 后台管理</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Api调用广告wiki</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Api调用广告wiki/更新日志.html">1. 更新日志</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Api调用广告wiki/接入指南.html">2. 接入指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Api调用广告wiki/首页焦点图.html">3. 首页焦点图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Api调用广告wiki/PC版咨询列表页.html">4. PC版咨询列表页</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Api调用广告wiki/PC版咨询终端页.html">5. PC版咨询终端页</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Api调用广告wiki/疾病搜索结果页.html">6. 疾病搜索结果页</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Api调用广告wiki/PC版按疾病找医院列表页.html">7. PC版按疾病找医院列表页</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Api调用广告wiki/PC版按科室找医院列表页.html">8. PC版按科室找医院列表页</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Api调用广告wiki/PC版医院单个疾病主页.html">9. PC版医院单个疾病主页</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Api调用广告wiki/PC版医院单个科室主页.html">10. PC版医院单个科室主页</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Api调用广告wiki/PC版按疾病找医生页.html">11. PC版按疾病找医生页</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Api调用广告wiki/PC版按科室找医生页.html">12. PC版按科室找医生页</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Api调用广告wiki/PC版医生患者咨询单个疾病聚合页.html">13. PC版医生患者咨询单个疾病聚合页</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Api调用广告wiki/PC版医生患者咨询聚合页.html">14. PC版医生患者咨询聚合页</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Api调用广告wiki/PC版医生详细介绍页.html">15. PC版医生详细介绍页</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Api调用广告wiki/PC版医生评价单个病种页.html">16. PC版医生评价单个病种页</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Api调用广告wiki/PC版医生主页.html">17. PC版医生主页</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Api调用广告wiki/PC版医生评价页.html">18. PC版医生评价页</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">新广告系统</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>5. 字段表</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/业务需求/字段表.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>5. 字段表<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<table class="colwidths-given docutils align-default" id="id2">
+<caption><span class="caption-text">【标签表】</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 27%" />
+<col style="width: 36%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>字段</p></th>
+<th class="head"><p>字段定义</p></th>
+<th class="head"><p>规则</p></th>
+<th class="head"><p>是否必填</p></th>
+<th class="head"><p>默认值</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>广告项目ID</p></td>
+<td><p>项目唯一标识</p></td>
+<td><p>广告项目创建时自动生成，唯一标识值，匹配用户权限</p></td>
+<td><p>是</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p>广告项目名字</p></td>
+<td><p>名字，用于运营区分</p></td>
+<td><p>命名不可重复。最多支持10个中文字。可支持中文、英文、标点符号、数字组合</p></td>
+<td><p>是</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-even"><td><p>广告位ID</p></td>
+<td><p>广告位唯一标识</p></td>
+<td><p>广告位创建时自动生成，广告位唯一标识值</p></td>
+<td><p>是</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p>广告位名字</p></td>
+<td><p>标签创建的时间</p></td>
+<td><p>标签创建时自动生成，包括年月日时分秒。精确到秒</p></td>
+<td><p>是</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-even"><td><p>广告形式</p></td>
+<td><p>区分广告是单一型广告和组合型广告</p></td>
+<td><p>单一型广告：只有一个广告素材、匹配一个落地页地址（区分端口，复数端口则多对多）组合型广告：多个广告素材分别对应自己落地页地址（区分端口）</p></td>
+<td><p>是</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p>广告素材组别</p></td>
+<td><p>当广告形式为“组合广告”时此字段有数据，区分同一个广告素材和落地页对应关系</p></td>
+<td><p>广告创建时自动生成，一个组别代表一个素材对应一个落地页地址（区分端口）</p></td>
+<td><p>否</p></td>
+<td><p>空值</p></td>
+</tr>
+<tr class="row-even"><td><p>广告素材类型</p></td>
+<td><p>区分广告素材类型</p></td>
+<td><p>图片、文字链、视频</p></td>
+<td><p>是</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p>广告素材</p></td>
+<td><p>根据类型储存不同内容</p></td>
+<td><p>图片：图片地址；文字链：字符串；视频：视频html码</p></td>
+<td><p>是</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-even"><td><p>上下架时间</p></td>
+<td><p>控制广告上下架时间，线上不显示在上下架时间外的广告</p></td>
+<td><p>时间戳，精确到秒</p></td>
+<td><p>是</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p>顺序</p></td>
+<td><p>广告优先级</p></td>
+<td><p>单一型广告：多个广告按照优先级排序，前端根据优先级先后展示。组合型广告：按照优先级控制组合型广告内的排序</p></td>
+<td><p>是</p></td>
+<td><p>1000</p></td>
+</tr>
+<tr class="row-even"><td><p>落地页地址</p></td>
+<td><p>点击广告的落地页地址</p></td>
+<td><p>一个素材对应一个落地页地址（区分端口），为空则广告不可点击</p></td>
+<td><p>否</p></td>
+<td><p>空值</p></td>
+</tr>
+<tr class="row-odd"><td><p>显示端指定范围</p></td>
+<td><p>前端页面根据页面标签控制是否展示广告</p></td>
+<td><p>根据疾病、科室标签判断广告是否展示</p></td>
+<td><p>是</p></td>
+<td><p>不限范围</p></td>
+</tr>
+<tr class="row-even"><td><p>用户端指定范围</p></td>
+<td><p>前端页面根据浏览用户属性控制是否展示广告</p></td>
+<td><p>根据用户年龄、性别、地区判断广告是否展示。未登陆用户判断为属于所有范围</p></td>
+<td><p>是</p></td>
+<td><p>不限范围</p></td>
+</tr>
+<tr class="row-odd"><td><p>审核状态</p></td>
+<td><p>控制广告是否通过审核，线上不展示不通过、未审核的广告</p></td>
+<td><p>由管理员审核广告，状态为：未审核、通过、不通过</p></td>
+<td><p>是</p></td>
+<td><p>未审核</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="数据埋点.html" class="btn btn-neutral float-right" title="6. 数据埋点" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="流程图.html" class="btn btn-neutral float-left" title="4. 流程图" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, jonny
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
