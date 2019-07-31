@@ -8,6 +8,7 @@
 
 .. toctree::
    :caption: 业务需求
+   :maxdepth: 3
    :hidden:
    :numbered:
 
@@ -27,6 +28,7 @@
 
 .. toctree::
     :caption: 功能开发与实现
+    :maxdepth: 3
     :numbered:
 
     功能开发与实现/后台管理

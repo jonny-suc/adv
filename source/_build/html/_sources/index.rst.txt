@@ -8,6 +8,7 @@
 
 .. toctree::
    :caption: 业务需求
+   :maxdepth: 3
    :hidden:
    :numbered:
 
@@ -27,6 +28,7 @@
 
 .. toctree::
     :caption: 功能开发与实现
+    :maxdepth: 3
     :numbered:
 
     功能开发与实现/后台管理
@@ -51,5 +53,7 @@
     Api调用广告wiki/PC版医生患者咨询聚合页
     Api调用广告wiki/PC版医生详细介绍页
     Api调用广告wiki/PC版医生评价单个病种页
-    Api调用广告wiki/PC版医生评价页
     Api调用广告wiki/PC版医生主页
+    Api调用广告wiki/PC版医生评价页
+    
+

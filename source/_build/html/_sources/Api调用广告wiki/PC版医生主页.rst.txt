@@ -64,7 +64,7 @@ PC版医生主页A级客户通栏广告位1
             "sign": "adpp_index_1_7",
             "ad_name": "test1",
             "sort_num": "1",
-            "ad_content": [
+            "ad_contents": [
               {
                 "ad_content_id": "15",
                 "content_type": "1",
