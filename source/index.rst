@@ -51,5 +51,7 @@
     Api调用广告wiki/PC版医生患者咨询聚合页
     Api调用广告wiki/PC版医生详细介绍页
     Api调用广告wiki/PC版医生评价单个病种页
-    Api调用广告wiki/PC版医生评价页
     Api调用广告wiki/PC版医生主页
+    Api调用广告wiki/PC版医生评价页
+    
+
