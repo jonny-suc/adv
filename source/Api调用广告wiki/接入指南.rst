@@ -228,6 +228,21 @@
      - String
      - --
      - 广告展示内容，文字/图片地址/视频通用
+   * - -default_ad
+     - 否
+     - Object
+     - {}
+     - 默认广告数据 ，adv_list为空时该项才有可能出现，但不是所有的广告位会出现；
+   * - ------ad_title
+     - 是
+     - String
+     - --
+     - 默认广告标题
+   * - ------ad_content
+     - 是
+     - String
+     - --
+     - 默认广告内容,可能是js 也可能是html ,也有可能是js+html
 
 
 
@@ -237,6 +252,7 @@
 -------------------
 .. code-block:: JAVASCRIPT
 
+    一般广告：
     {
         "errcode": 0,
         "msg": "成功",
@@ -260,4 +276,18 @@
                         }
                     ]
                 }
+    }
+
+    默认广告：
+    {
+      "errcode": 0,
+      "msg": "成功",
+      "data": {
+          "adpp_type": "0",
+          "adv_list": [],
+          "default_ad": {
+              "ad_title": "默认广告",
+              "ad_content": "<script type=\"text/javascript\" src=\"//a1.mingyihui.net/site/web/resource/l8xz8w.js?snfcwwt=tp\"></script>"
+            }
+        }
     }
