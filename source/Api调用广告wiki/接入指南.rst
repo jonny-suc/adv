@@ -110,6 +110,11 @@
      - String
      - --
      - 用户 ip 地址
+   * -   -ser_diseaseid
+     - 否
+     - Intager
+     - --
+     - 搜索出的疾病id
        
 
 请求JAVASCRIPT示例
